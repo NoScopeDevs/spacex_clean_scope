@@ -5,8 +5,8 @@ import 'dragons_state.dart';
 part 'dragons_state_notifier.dart';
 
 /// Provider to use the DragonsStateNotifier
-final dragonsNotifierProvider = StateNotifierProvider(
-  (ref) => DragonsNotifier(ref),
+final dragonsNotifierProvider = StateNotifierProvider<DragonsNotifier>(
+  (_) => DragonsNotifier(),
 );
 
 /// Repositories Providers
