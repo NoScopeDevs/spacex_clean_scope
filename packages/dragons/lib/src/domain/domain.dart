@@ -1,8 +1,9 @@
 // Export Entities
-// TODO: Export entities
+export 'entities/dragon.dart' show Dragon;
 
 // Export Repositories
 export 'repositories/idragons_repository.dart';
 
 // Export Use Cases
-// TODO: Export use cases
+export 'usecases/get_dragon.dart';
+export 'usecases/get_dragons.dart';

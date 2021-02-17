@@ -14,8 +14,10 @@ dependencies:
     git:
       url: git://github.com/NoScopeDevs/network_manager
 
-  equatable: ^1.2.6
   dartz:
+  dio: ^3.0.10
+  equatable: ^1.2.6
+  json_annotation:
   meta:
   path:
 
