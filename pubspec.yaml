@@ -16,6 +16,14 @@ dependencies:
   # * State Management
   flutter_riverpod: ^0.12.4
   freezed_annotation: ^0.12.0
+  dio: ^3.0.10
+  
+  network_manager:
+    git:
+      url: git://github.com/NoScopeDevs/network_manager
+
+  dragons:
+    path: packages/dragons
 
 dev_dependencies:
   flutter_test:

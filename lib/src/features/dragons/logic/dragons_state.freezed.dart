@@ -14,8 +14,10 @@ class _$DragonsStateTearOff {
   const _$DragonsStateTearOff();
 
 // ignore: unused_element
-  Data call() {
-    return const Data();
+  Data data({@required List<Dragon> dragons}) {
+    return Data(
+      dragons: dragons,
+    );
   }
 
 // ignore: unused_element
@@ -43,30 +45,30 @@ const $DragonsState = _$DragonsStateTearOff();
 /// @nodoc
 mixin _$DragonsState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(), {
+  TResult when<TResult extends Object>({
+    @required TResult data(List<Dragon> dragons),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
   });
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(), {
+  TResult maybeWhen<TResult extends Object>({
+    TResult data(List<Dragon> dragons),
     TResult initial(),
     TResult loading(),
     TResult error(String message),
     @required TResult orElse(),
   });
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult map<TResult extends Object>({
+    @required TResult data(Data value),
     @required TResult initial(Initial value),
     @required TResult loading(Loading value),
     @required TResult error(Error value),
   });
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult maybeMap<TResult extends Object>({
+    TResult data(Data value),
     TResult initial(Initial value),
     TResult loading(Loading value),
     TResult error(Error value),
@@ -94,6 +96,7 @@ class _$DragonsStateCopyWithImpl<$Res> implements $DragonsStateCopyWith<$Res> {
 abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res>;
+  $Res call({List<Dragon> dragons});
 }
 
 /// @nodoc
@@ -104,90 +107,115 @@ class _$DataCopyWithImpl<$Res> extends _$DragonsStateCopyWithImpl<$Res>
 
   @override
   Data get _value => super._value as Data;
+
+  @override
+  $Res call({
+    Object dragons = freezed,
+  }) {
+    return _then(Data(
+      dragons: dragons == freezed ? _value.dragons : dragons as List<Dragon>,
+    ));
+  }
 }
 
 /// @nodoc
 class _$Data implements Data {
-  const _$Data();
+  const _$Data({@required this.dragons}) : assert(dragons != null);
+
+  @override
+  final List<Dragon> dragons;
 
   @override
   String toString() {
-    return 'DragonsState()';
+    return 'DragonsState.data(dragons: $dragons)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Data);
+    return identical(this, other) ||
+        (other is Data &&
+            (identical(other.dragons, dragons) ||
+                const DeepCollectionEquality().equals(other.dragons, dragons)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(dragons);
+
+  @JsonKey(ignore: true)
+  @override
+  $DataCopyWith<Data> get copyWith =>
+      _$DataCopyWithImpl<Data>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(), {
+  TResult when<TResult extends Object>({
+    @required TResult data(List<Dragon> dragons),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
   }) {
-    assert($default != null);
+    assert(data != null);
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
-    return $default();
+    return data(dragons);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(), {
+  TResult maybeWhen<TResult extends Object>({
+    TResult data(List<Dragon> dragons),
     TResult initial(),
     TResult loading(),
     TResult error(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if ($default != null) {
-      return $default();
+    if (data != null) {
+      return data(dragons);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult map<TResult extends Object>({
+    @required TResult data(Data value),
     @required TResult initial(Initial value),
     @required TResult loading(Loading value),
     @required TResult error(Error value),
   }) {
-    assert($default != null);
+    assert(data != null);
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
-    return $default(this);
+    return data(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult maybeMap<TResult extends Object>({
+    TResult data(Data value),
     TResult initial(Initial value),
     TResult loading(Loading value),
     TResult error(Error value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if ($default != null) {
-      return $default(this);
+    if (data != null) {
+      return data(this);
     }
     return orElse();
   }
 }
 
 abstract class Data implements DragonsState {
-  const factory Data() = _$Data;
+  const factory Data({@required List<Dragon> dragons}) = _$Data;
+
+  List<Dragon> get dragons;
+  @JsonKey(ignore: true)
+  $DataCopyWith<Data> get copyWith;
 }
 
 /// @nodoc
@@ -225,13 +253,13 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(), {
+  TResult when<TResult extends Object>({
+    @required TResult data(List<Dragon> dragons),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
   }) {
-    assert($default != null);
+    assert(data != null);
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
@@ -240,8 +268,8 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(), {
+  TResult maybeWhen<TResult extends Object>({
+    TResult data(List<Dragon> dragons),
     TResult initial(),
     TResult loading(),
     TResult error(String message),
@@ -256,13 +284,13 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult map<TResult extends Object>({
+    @required TResult data(Data value),
     @required TResult initial(Initial value),
     @required TResult loading(Loading value),
     @required TResult error(Error value),
   }) {
-    assert($default != null);
+    assert(data != null);
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
@@ -271,8 +299,8 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult maybeMap<TResult extends Object>({
+    TResult data(Data value),
     TResult initial(Initial value),
     TResult loading(Loading value),
     TResult error(Error value),
@@ -325,13 +353,13 @@ class _$Loading implements Loading {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(), {
+  TResult when<TResult extends Object>({
+    @required TResult data(List<Dragon> dragons),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
   }) {
-    assert($default != null);
+    assert(data != null);
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
@@ -340,8 +368,8 @@ class _$Loading implements Loading {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(), {
+  TResult maybeWhen<TResult extends Object>({
+    TResult data(List<Dragon> dragons),
     TResult initial(),
     TResult loading(),
     TResult error(String message),
@@ -356,13 +384,13 @@ class _$Loading implements Loading {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult map<TResult extends Object>({
+    @required TResult data(Data value),
     @required TResult initial(Initial value),
     @required TResult loading(Loading value),
     @required TResult error(Error value),
   }) {
-    assert($default != null);
+    assert(data != null);
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
@@ -371,8 +399,8 @@ class _$Loading implements Loading {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult maybeMap<TResult extends Object>({
+    TResult data(Data value),
     TResult initial(Initial value),
     TResult loading(Loading value),
     TResult error(Error value),
@@ -447,13 +475,13 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>(
-    TResult $default(), {
+  TResult when<TResult extends Object>({
+    @required TResult data(List<Dragon> dragons),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult error(String message),
   }) {
-    assert($default != null);
+    assert(data != null);
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
@@ -462,8 +490,8 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>(
-    TResult $default(), {
+  TResult maybeWhen<TResult extends Object>({
+    TResult data(List<Dragon> dragons),
     TResult initial(),
     TResult loading(),
     TResult error(String message),
@@ -478,13 +506,13 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult map<TResult extends Object>({
+    @required TResult data(Data value),
     @required TResult initial(Initial value),
     @required TResult loading(Loading value),
     @required TResult error(Error value),
   }) {
-    assert($default != null);
+    assert(data != null);
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
@@ -493,8 +521,8 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>(
-    TResult $default(Data value), {
+  TResult maybeMap<TResult extends Object>({
+    TResult data(Data value),
     TResult initial(Initial value),
     TResult loading(Loading value),
     TResult error(Error value),
