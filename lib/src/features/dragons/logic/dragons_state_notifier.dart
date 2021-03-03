@@ -5,27 +5,21 @@ class DragonsNotifier extends StateNotifier<DragonsState> {
   /// Base constructor expects its usecases
   /// and also defines inital state
   DragonsNotifier({
-    @required GetDragon getDragon,
     @required GetDragons getDragons,
-  })  : assert(getDragon != null),
-        assert(getDragons != null),
-        _getDragon = getDragon,
+  })  : assert(getDragons != null),
         _getDragons = getDragons,
-        super(
-          const DragonsState.initial(),
-        );
+        super(const DragonsState.initial());
 
-  final GetDragon _getDragon;
   final GetDragons _getDragons;
 
   Future<void> getDragons() async {
-    state = const Loading();
+    state = const DragonsState.loading();
 
     final result = await _getDragons();
 
     result.fold(
-      (l) => state = const Error('Error!'),
-      (r) => state = Data(dragons: r),
+      (error) => state = DragonsState.error(error.toString()),
+      (dragons) => state = DragonsState.data(dragons: dragons),
     );
   }
 }

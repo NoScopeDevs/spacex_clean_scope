@@ -1,14 +1,18 @@
-import 'package:dragons/dragons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:spacex_clean_scope/src/features/dragons/logic/dragons_provider.dart';
 
-///DragonsPage
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../logic/dragons_provider.dart';
+
+import 'dragons_page.i18n.dart';
+import 'widgets/widgets.dart';
+
+/// DragonsPage to show Dragons
 class DragonsPage extends StatelessWidget {
-  ///DragonsPage constructor
+  /// DragonsPage constructor
   const DragonsPage({Key key}) : super(key: key);
 
-  ///DragonsPage [routeName]
+  /// DragonsPage [routeName]
   static const routeName = 'DragonsPage';
 
   ///Router for DragonsPage
@@ -35,8 +39,8 @@ class _DragonsConsumer extends ConsumerWidget {
     return state.when(
       initial: () => const Center(child: _Initial()),
       loading: () => const Center(child: CircularProgressIndicator()),
-      data: (dragons) => _DragonsList(dragons: dragons),
-      error: (_) => const Center(child: Text('Error')),
+      data: (dragons) => DragonsList(dragons: dragons),
+      error: (error) => Center(child: Text(error)),
     );
   }
 }
@@ -50,44 +54,15 @@ class _Initial extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const Text('Initial'),
-        const SizedBox(height: 20.0),
+        const SizedBox(height: 20),
         RaisedButton(
           color: Colors.lightBlue,
-          child: const Text('Get Dragons'),
+          child: Text(kGetDragonsButtonText.i18n),
           onPressed: () {
             context.read(dragonsNotifierProvider).getDragons();
           },
         )
       ],
-    );
-  }
-}
-
-class _DragonsList extends StatelessWidget {
-  const _DragonsList({
-    Key key,
-    @required this.dragons,
-  }) : super(key: key);
-
-  final List<Dragon> dragons;
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (_, index) {
-        final dragon = dragons[index];
-        return Card(
-          margin: const EdgeInsets.only(bottom: 10.0),
-          child: ListTile(
-            title: Text(dragon.name),
-            subtitle: Text(dragon.description),
-            trailing: Icon(
-              dragon.active ? Icons.check : Icons.close,
-              color: dragon.active ? Colors.green : Colors.red,
-            ),
-          ),
-        );
-      },
-      itemCount: dragons.length,
     );
   }
 }

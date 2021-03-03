@@ -57,6 +57,29 @@ class Dragon extends Equatable {
   final String description;
 
   @override
-  // TODO: implement props
-  List<Object> get props => throw UnimplementedError();
+  List<Object> get props => [
+        id,
+        name,
+        type,
+        active,
+        crewCapacity,
+        sidewallAngleDeg,
+        orbitDurationYr,
+        dryMassKg,
+        dryMassLb,
+        firstFlight,
+        heatShield,
+        thrusters,
+        launchPayloadMass,
+        launchPayloadVol,
+        returnPayloadMass,
+        returnPayloadVol,
+        pressurizedCapsule,
+        trunk,
+        heightWTrunk,
+        diameter,
+        flickrImages,
+        wikipedia,
+        description,
+      ];
 }

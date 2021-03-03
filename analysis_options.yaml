@@ -8,3 +8,4 @@ linter:
 analyzer:
   exclude:
     - "**/*.freezed.dart"
+    - "**/*.i18n.dart"
